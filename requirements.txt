@@ -1,0 +1,8 @@
+streamlit
+ffmpeg-python
+librosa
+numpy
+pandas
+sklearn
+tensorflow
+keras
