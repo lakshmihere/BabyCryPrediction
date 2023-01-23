@@ -54,7 +54,7 @@ add_bg_from_local('background.jpg')
 st.write("""
 # Baby Cry Monitor App
 This app predicts the nature of **Baby Cry** from audio clip.
-Data is obtained from the [**donateacry-corpus**](https://github.com/gveres/donateacry-corpus) by Gabor Veres.
+Data used for building the model here, is obtained from the [**donateacry-corpus**](https://github.com/gveres/donateacry-corpus) by Gabor Veres.
 """)
 
 
@@ -116,11 +116,12 @@ def classification(dataframe):
     model = tf.keras.models.load_model('saved_model_clean_data/my_model')
     # generate predictions for test samples
     predictions = model.predict(X_test)
+    print(predictions[0])
+    baby_cry_tags = "bellyPain burping coldHot discomfort dontKnow hungry lonely scared tired".split()
+    for i in range(len(predictions[0])):
+        print(baby_cry_tags[i], '\t==>\t', predictions[0][i]*100, '%')
     # generate argmax for predictions
     classes = np.argmax(predictions, axis = 1)
-    # transform class number into class name
-    #baby_cry_tags = "bellyPain burping coldHot discomfort dontKnow hungry lonely scared tired".split()
-    #result = baby_cry_tags[classes]
     result = converter.inverse_transform(classes)
     print("classes", classes)
     print("result", result)
