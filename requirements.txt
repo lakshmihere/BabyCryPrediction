@@ -6,4 +6,4 @@ pandas
 sklearn
 tensorflow
 keras
-IPython
+ipython
