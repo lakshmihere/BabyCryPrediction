@@ -3,7 +3,7 @@ ffmpeg-python
 librosa
 numpy
 pandas
-sklearn
+scikit-learn
 tensorflow
 keras
 ipython
